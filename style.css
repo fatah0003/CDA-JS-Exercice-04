@@ -1,0 +1,59 @@
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Corps de page */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f8fafc, #e2e8f0);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* Section principale */
+  section {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+  }
+  
+  /* Image */
+  img {
+    max-width: 200px;
+    margin: 1rem auto;
+    display: block;
+  }
+  
+  /* Boutons */
+  button {
+    padding: 0.6rem 1.2rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #3b82f6;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #2563eb;
+  }
+  
+  /* Infos */
+  #id, #name, #weight, #height, #types, #abilities {
+    margin: 0.3rem 0;
+    font-size: 1.1rem;
+  }
+  

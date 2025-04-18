@@ -7,6 +7,9 @@ const next = document.querySelector("#next");
 const previous = document.querySelector("#previous");
 const myTypes = document.querySelector("#types")
 const myAbilities = document.querySelector("#abilities")
+const myImg = document.querySelector("img")
+console.log(myImg);
+
 function mapPokemon(data){
     return{
         name: data.name,
@@ -14,7 +17,8 @@ function mapPokemon(data){
         weight: data.weight,
         height: data.height,
         types: data.types.map(t => t.type.name),
-        abilities: data.abilities.map(a => a.ability.name)
+        abilities: data.abilities.map(a => a.ability.name),
+        img: data.sprites.back_default
     }
     
     
@@ -45,6 +49,7 @@ myId.textContent = pokemonById.id;
 myName.textContent = pokemonById.name;
 myWeight.textContent = `${pokemonById.weight} Kg`;
 myHeight.textContent = `${pokemonById.height} m`;
+myImg.src = `${pokemonById.img}`
 pokemonById.types.forEach(type => {
     console.log(type);
     myTypes.textContent += `${type} `
@@ -67,6 +72,7 @@ next.addEventListener('click', async () => {
         myName.textContent = nextPokemon.name;
         myWeight.textContent = `${nextPokemon.weight} Kg`;
         myHeight.textContent = `${nextPokemon.height} m`;
+        myImg.src = `${nextPokemon.img}`
         myTypes.textContent = "";
 myAbilities.textContent = "";
 
@@ -90,7 +96,7 @@ previous.addEventListener('click', async () => {
         myName.textContent = previousPokemon.name;
         myWeight.textContent = `${previousPokemon.weight} Kg`;
         myHeight.textContent = `${previousPokemon.height} m`;
-
+myImg.src = `${previousPokemon.img}`
         myTypes.textContent = "";
         myAbilities.textContent = "";
 
