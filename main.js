@@ -5,14 +5,16 @@ const myWeight = document.querySelector("#weight");
 const myHeight = document.querySelector("#height");
 const next = document.querySelector("#next");
 const previous = document.querySelector("#previous");
-
+const myTypes = document.querySelector("#types")
+const myAbilities = document.querySelector("#abilities")
 function mapPokemon(data){
     return{
         name: data.name,
         id: data.id,
         weight: data.weight,
-        height: data.height
-
+        height: data.height,
+        types: data.types.map(t => t.type.name),
+        abilities: data.abilities.map(a => a.ability.name)
     }
     
     
@@ -43,6 +45,15 @@ myId.textContent = pokemonById.id;
 myName.textContent = pokemonById.name;
 myWeight.textContent = `${pokemonById.weight} Kg`;
 myHeight.textContent = `${pokemonById.height} m`;
+pokemonById.types.forEach(type => {
+    console.log(type);
+    myTypes.textContent += `${type} `
+});
+pokemonById.abilities.forEach(ability => {
+    console.log(ability);
+    myAbilities.textContent += `${ability} `
+  });
+  
 
 // Utiliser des boutons pour passer au prochain pokemon ou au précedant
 
@@ -56,18 +67,40 @@ next.addEventListener('click', async () => {
         myName.textContent = nextPokemon.name;
         myWeight.textContent = `${nextPokemon.weight} Kg`;
         myHeight.textContent = `${nextPokemon.height} m`;
+        myTypes.textContent = "";
+myAbilities.textContent = "";
+
+nextPokemon.types.forEach(type => {
+    myTypes.textContent += `${type} `;
+});
+
+nextPokemon.abilities.forEach(ability => {
+    myAbilities.textContent += `${ability} `;
+});
     }
 });
 
 previous.addEventListener('click', async () => {
-   if (id >1){
-    id--; 
-    const previousPokemon =  await getpokemonById(id)
-    console.log(previousPokemon);
+    if (id > 1) {
+        id--;
+        const previousPokemon = await getpokemonById(id);
+        console.log(previousPokemon);
 
-    myId.textContent = previousPokemon.id;
-    myName.textContent = previousPokemon.name;
-    myWeight.textContent = `${previousPokemon.weight} Kg`;
-    myHeight.textContent = `${previousPokemon.height} m`;
-   }
+        myId.textContent = previousPokemon.id;
+        myName.textContent = previousPokemon.name;
+        myWeight.textContent = `${previousPokemon.weight} Kg`;
+        myHeight.textContent = `${previousPokemon.height} m`;
+
+        myTypes.textContent = "";
+        myAbilities.textContent = "";
+
+        previousPokemon.types.forEach(type => {
+            myTypes.textContent += `${type} `;
+        });
+
+        previousPokemon.abilities.forEach(ability => {
+            myAbilities.textContent += `${ability} `;
+        });
+    }
 });
+
